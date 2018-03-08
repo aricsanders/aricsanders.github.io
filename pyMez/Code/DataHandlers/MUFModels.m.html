@@ -1111,6 +1111,7 @@ table {
     <li class="mono"><a href="#pyMez.Code.DataHandlers.MUFModels.MUFComplexModel.get_re_mean">get_re_mean</a></li>
     <li class="mono"><a href="#pyMez.Code.DataHandlers.MUFModels.MUFComplexModel.get_re_std">get_re_std</a></li>
     <li class="mono"><a href="#pyMez.Code.DataHandlers.MUFModels.MUFComplexModel.get_row">get_row</a></li>
+    <li class="mono"><a href="#pyMez.Code.DataHandlers.MUFModels.MUFComplexModel.get_unique_column_values">get_unique_column_values</a></li>
     <li class="mono"><a href="#pyMez.Code.DataHandlers.MUFModels.MUFComplexModel.get_variation_parameter">get_variation_parameter</a></li>
     <li class="mono"><a href="#pyMez.Code.DataHandlers.MUFModels.MUFComplexModel.is_valid">is_valid</a></li>
     <li class="mono"><a href="#pyMez.Code.DataHandlers.MUFModels.MUFComplexModel.lines_defined">lines_defined</a></li>
@@ -1297,7 +1298,30 @@ table {
   <header id="section-intro">
   <h1 class="title"><span class="name">pyMez.Code.DataHandlers.MUFModels</span> module</h1>
   <p>A module that holds the models associated with the Microwave Uncertainty Framework.
-Most models are xml based</p>
+Most models are xml based. Has an interface for running .net as scripts</p>
+<h2>Examples</h2>
+<div class="codehilite"><pre><span></span><span class="o">&gt;&gt;</span><span class="n">vna_uncert</span><span class="o">=</span><span class="n">MUFVNAUncert</span><span class="p">(</span><span class="s2">&quot;MyUncertaintyMenu.VNAUncert&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span><span class="n">vna_uncert</span><span class="o">.</span><span class="n">get_results_directory</span><span class="p">()</span>
+</pre></div>
+
+
+<p><h3><a href="../../../Examples/Html/MUFModels_Example.html">MUFModels Example</a></h3></p>
+<h2>Requirements</h2>
+<ul>
+<li><a href="https://docs.python.org/2/library/sys.html">sys</a></li>
+<li><a href="https://docs.python.org/2/library/os.html?highlight=os#module-os">os</a></li>
+<li><a href="https://docs.python.org/2/library/types.html">types</a></li>
+<li><a href="https://github.com/aricsanders/pyMez">pyMez</a></li>
+<li>[pythonnet][https://github.com/pythonnet/pythonnet]</li>
+</ul>
+<h2>Help</h2>
+<p><a href="./index.html"><code>pyMez.Code.DataHandlers</code></a>
+<div>
+<a href="../../../pyMez_Documentation.html">Documentation Home</a> |
+<a href="../../index.html">API Documentation Home</a> |
+<a href="../../../Examples/Html/Examples_Home.html">Examples Home</a> |
+<a href="../../../Reference_Index.html">Index</a>
+</div></p>
   
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pyMez.Code.DataHandlers.MUFModels', this);">Show source &equiv;</a></p>
   <div id="source-pyMez.Code.DataHandlers.MUFModels" class="source">
@@ -1309,7 +1333,34 @@ Most models are xml based</p>
 <span class="c1"># License:     MIT License</span>
 <span class="c1">#-----------------------------------------------------------------------------</span>
 <span class="sd">&quot;&quot;&quot; A module that holds the models associated with the Microwave Uncertainty Framework.</span>
-<span class="sd">Most models are xml based&quot;&quot;&quot;</span>
+<span class="sd">Most models are xml based. Has an interface for running .net as scripts</span>
+
+<span class="sd">Examples</span>
+<span class="sd">--------</span>
+<span class="sd">    #!python</span>
+<span class="sd">    &gt;&gt;vna_uncert=MUFVNAUncert(&quot;MyUncertaintyMenu.VNAUncert&quot;)</span>
+<span class="sd">    &gt;&gt;vna_uncert.get_results_directory()</span>
+
+<span class="sd"> &lt;h3&gt;&lt;a href=&quot;../../../Examples/Html/MUFModels_Example.html&quot;&gt;MUFModels Example&lt;/a&gt;&lt;/h3&gt;</span>
+
+<span class="sd">Requirements</span>
+<span class="sd">------------</span>
+<span class="sd">+ [sys](https://docs.python.org/2/library/sys.html)</span>
+<span class="sd">+ [os](https://docs.python.org/2/library/os.html?highlight=os#module-os)</span>
+<span class="sd">+ [types](https://docs.python.org/2/library/types.html)</span>
+<span class="sd">+ [pyMez](https://github.com/aricsanders/pyMez)</span>
+<span class="sd">+ [pythonnet][https://github.com/pythonnet/pythonnet]</span>
+
+
+<span class="sd">Help</span>
+<span class="sd">---------------</span>
+<span class="sd">&lt;a href=&quot;./index.html&quot;&gt;`pyMez.Code.DataHandlers`&lt;/a&gt;</span>
+<span class="sd">&lt;div&gt;</span>
+<span class="sd">&lt;a href=&quot;../../../pyMez_Documentation.html&quot;&gt;Documentation Home&lt;/a&gt; |</span>
+<span class="sd">&lt;a href=&quot;../../index.html&quot;&gt;API Documentation Home&lt;/a&gt; |</span>
+<span class="sd">&lt;a href=&quot;../../../Examples/Html/Examples_Home.html&quot;&gt;Examples Home&lt;/a&gt; |</span>
+<span class="sd">&lt;a href=&quot;../../../Reference_Index.html&quot;&gt;Index&lt;/a&gt;</span>
+<span class="sd">&lt;/div&gt;&quot;&quot;&quot;</span>
 
 <span class="c1">#-----------------------------------------------------------------------------</span>
 <span class="c1"># Standard Imports</span>
@@ -1927,6 +1978,7 @@ Most models are xml based</p>
           <ul class="class_list">
           <li><a href="#pyMez.Code.DataHandlers.MUFModels.MUFComplexModel">MUFComplexModel</a></li>
           <li>Code.DataHandlers.GeneralModels.AsciiDataTable</li>
+          <li>__builtin__.object</li>
           </ul>
           <h3>Instance variables</h3>
             <div class="item">
@@ -2957,6 +3009,37 @@ of all the options that have to do with element. Element must be header,column_n
         <span class="k">return</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">row_index</span><span class="p">]</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="pyMez.Code.DataHandlers.MUFModels.MUFComplexModel.get_unique_column_values">
+    <p>def <span class="ident">get_unique_column_values</span>(</p><p>self, column_name=None, column_index=None)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Returns the unique values in a  column as a list given a column name or column index</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pyMez.Code.DataHandlers.MUFModels.MUFComplexModel.get_unique_column_values', this);">Show source &equiv;</a></p>
+  <div id="source-pyMez.Code.DataHandlers.MUFModels.MUFComplexModel.get_unique_column_values" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">get_unique_column_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">column_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">column_index</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the unique values in a  column as a list given a column name or column index&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">column_name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">column_index</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">column_selector</span><span class="o">=</span><span class="n">column_index</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">column_selector</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">column_names</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">column_name</span><span class="p">)</span>
+    <span class="n">out_list</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">column_selector</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">))]))</span>
+    <span class="k">return</span> <span class="n">out_list</span>
 </pre></div>
 
   </div>
