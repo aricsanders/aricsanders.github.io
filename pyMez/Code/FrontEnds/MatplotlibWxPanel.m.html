@@ -1977,8 +1977,8 @@ The custom tool bar is MyNavigationToolBar</p>
                     <span class="c1">#print(x_name,y_name)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">x_name</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">y_name</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-                    <span class="n">x_data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">data_sheet</span><span class="o">.</span><span class="n">to_list</span><span class="p">(</span><span class="n">x_name</span><span class="p">)))</span>
-                    <span class="n">y_data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">data_sheet</span><span class="o">.</span><span class="n">to_list</span><span class="p">(</span><span class="n">y_name</span><span class="p">)))</span>
+                    <span class="n">x_data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data_sheet</span><span class="o">.</span><span class="n">to_list</span><span class="p">(</span><span class="n">x_name</span><span class="p">)])</span>
+                    <span class="n">y_data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data_sheet</span><span class="o">.</span><span class="n">to_list</span><span class="p">(</span><span class="n">y_name</span><span class="p">)])</span>
                     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span><span class="n">y_data</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
                     <span class="c1"># Set the Title</span>
@@ -2053,7 +2053,7 @@ The custom tool bar is MyNavigationToolBar</p>
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
     <span class="n">frame</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">Size</span><span class="p">(</span><span class="mi">900</span><span class="p">,</span> <span class="mi">800</span><span class="p">))</span>
-    <span class="n">panel</span><span class="o">=</span><span class="n">MatplotlibWxPanel</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">u&#39;MatplotlibWxPanel&#39;</span><span class="p">,</span>
+    <span class="n">panel</span><span class="o">=</span><span class="n">MatplotlibWxPanel</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;MatplotlibWxPanel&#39;</span><span class="p">,</span>
               <span class="n">parent</span><span class="o">=</span><span class="n">frame</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="mi">350</span><span class="p">,</span> <span class="mi">204</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">Size</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">800</span><span class="p">),</span>
               <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">TAB_TRAVERSAL</span><span class="p">)</span>
     <span class="n">sizer</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">()</span>
@@ -11756,8 +11756,8 @@ like menu bar (un)wrapping or (dis)appearance of the scrollbars.</p></div>
                     <span class="c1">#print(x_name,y_name)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">x_name</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">y_name</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-                    <span class="n">x_data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">data_sheet</span><span class="o">.</span><span class="n">to_list</span><span class="p">(</span><span class="n">x_name</span><span class="p">)))</span>
-                    <span class="n">y_data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">data_sheet</span><span class="o">.</span><span class="n">to_list</span><span class="p">(</span><span class="n">y_name</span><span class="p">)))</span>
+                    <span class="n">x_data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data_sheet</span><span class="o">.</span><span class="n">to_list</span><span class="p">(</span><span class="n">x_name</span><span class="p">)])</span>
+                    <span class="n">y_data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data_sheet</span><span class="o">.</span><span class="n">to_list</span><span class="p">(</span><span class="n">y_name</span><span class="p">)])</span>
                     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span><span class="n">y_data</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
                     <span class="c1"># Set the Title</span>
@@ -13062,7 +13062,7 @@ it.</p></div>
             
   <div class="item">
     <div class="name def" id="pyMez.Code.FrontEnds.MatplotlibWxPanel.MyNavigationToolbar.AddCheckLabelTool">
-    <p>def <span class="ident">AddCheckLabelTool</span>(</p><p>self, id, label, bitmap, bmpDisabled=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type &#39;wxBitmap *&#39; at 0x13415690&gt; &gt;, shortHelp=&#39;&#39;, longHelp=&#39;&#39;, clientData=None)</p>
+    <p>def <span class="ident">AddCheckLabelTool</span>(</p><p>self, id, label, bitmap, bmpDisabled=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type &#39;wxBitmap *&#39; at 0x13285690&gt; &gt;, shortHelp=&#39;&#39;, longHelp=&#39;&#39;, clientData=None)</p>
     </div>
     
 
@@ -13089,7 +13089,7 @@ it.</p></div>
             
   <div class="item">
     <div class="name def" id="pyMez.Code.FrontEnds.MatplotlibWxPanel.MyNavigationToolbar.AddCheckTool">
-    <p>def <span class="ident">AddCheckTool</span>(</p><p>self, id, bitmap, bmpDisabled=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type &#39;wxBitmap *&#39; at 0x13415690&gt; &gt;, shortHelp=&#39;&#39;, longHelp=&#39;&#39;, clientData=None)</p>
+    <p>def <span class="ident">AddCheckTool</span>(</p><p>self, id, bitmap, bmpDisabled=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type &#39;wxBitmap *&#39; at 0x13285690&gt; &gt;, shortHelp=&#39;&#39;, longHelp=&#39;&#39;, clientData=None)</p>
     </div>
     
 
@@ -13168,7 +13168,7 @@ functions so should not be required by the application programmer.</p></div>
             
   <div class="item">
     <div class="name def" id="pyMez.Code.FrontEnds.MatplotlibWxPanel.MyNavigationToolbar.AddLabelTool">
-    <p>def <span class="ident">AddLabelTool</span>(</p><p>self, id, label, bitmap, bmpDisabled=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type &#39;wxBitmap *&#39; at 0x13415690&gt; &gt;, kind=0, shortHelp=&#39;&#39;, longHelp=&#39;&#39;, clientData=None)</p>
+    <p>def <span class="ident">AddLabelTool</span>(</p><p>self, id, label, bitmap, bmpDisabled=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type &#39;wxBitmap *&#39; at 0x13285690&gt; &gt;, kind=0, shortHelp=&#39;&#39;, longHelp=&#39;&#39;, clientData=None)</p>
     </div>
     
 
@@ -13225,7 +13225,7 @@ is created and used as the disabled image.</p></div>
             
   <div class="item">
     <div class="name def" id="pyMez.Code.FrontEnds.MatplotlibWxPanel.MyNavigationToolbar.AddRadioLabelTool">
-    <p>def <span class="ident">AddRadioLabelTool</span>(</p><p>self, id, label, bitmap, bmpDisabled=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type &#39;wxBitmap *&#39; at 0x13415690&gt; &gt;, shortHelp=&#39;&#39;, longHelp=&#39;&#39;, clientData=None)</p>
+    <p>def <span class="ident">AddRadioLabelTool</span>(</p><p>self, id, label, bitmap, bmpDisabled=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type &#39;wxBitmap *&#39; at 0x13285690&gt; &gt;, shortHelp=&#39;&#39;, longHelp=&#39;&#39;, clientData=None)</p>
     </div>
     
 
@@ -13256,7 +13256,7 @@ other toggled radio tools in the same group when it happens</p></div>
             
   <div class="item">
     <div class="name def" id="pyMez.Code.FrontEnds.MatplotlibWxPanel.MyNavigationToolbar.AddRadioTool">
-    <p>def <span class="ident">AddRadioTool</span>(</p><p>self, id, bitmap, bmpDisabled=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type &#39;wxBitmap *&#39; at 0x13415690&gt; &gt;, shortHelp=&#39;&#39;, longHelp=&#39;&#39;, clientData=None)</p>
+    <p>def <span class="ident">AddRadioTool</span>(</p><p>self, id, bitmap, bmpDisabled=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type &#39;wxBitmap *&#39; at 0x13285690&gt; &gt;, shortHelp=&#39;&#39;, longHelp=&#39;&#39;, clientData=None)</p>
     </div>
     
 
@@ -13362,7 +13362,7 @@ other toggled radio tools in the same group when it happens</p></div>
             
   <div class="item">
     <div class="name def" id="pyMez.Code.FrontEnds.MatplotlibWxPanel.MyNavigationToolbar.AddTool">
-    <p>def <span class="ident">AddTool</span>(</p><p>self, id, bitmap, pushedBitmap=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type &#39;wxBitmap *&#39; at 0x13415690&gt; &gt;, isToggle=0, clientData=None, shortHelpString=&#39;&#39;, longHelpString=&#39;&#39;)</p>
+    <p>def <span class="ident">AddTool</span>(</p><p>self, id, bitmap, pushedBitmap=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type &#39;wxBitmap *&#39; at 0x13285690&gt; &gt;, isToggle=0, clientData=None, shortHelpString=&#39;&#39;, longHelpString=&#39;&#39;)</p>
     </div>
     
 
@@ -18258,7 +18258,7 @@ to the dialog via validators.</p></div>
             
   <div class="item">
     <div class="name def" id="pyMez.Code.FrontEnds.MatplotlibWxPanel.MyNavigationToolbar.InsertLabelTool">
-    <p>def <span class="ident">InsertLabelTool</span>(</p><p>self, pos, id, label, bitmap, bmpDisabled=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type &#39;wxBitmap *&#39; at 0x13415690&gt; &gt;, kind=0, shortHelp=&#39;&#39;, longHelp=&#39;&#39;, clientData=None)</p>
+    <p>def <span class="ident">InsertLabelTool</span>(</p><p>self, pos, id, label, bitmap, bmpDisabled=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type &#39;wxBitmap *&#39; at 0x13285690&gt; &gt;, kind=0, shortHelp=&#39;&#39;, longHelp=&#39;&#39;, clientData=None)</p>
     </div>
     
 
@@ -18365,7 +18365,7 @@ is equivalent to AddTool()</p></div>
             
   <div class="item">
     <div class="name def" id="pyMez.Code.FrontEnds.MatplotlibWxPanel.MyNavigationToolbar.InsertTool">
-    <p>def <span class="ident">InsertTool</span>(</p><p>self, pos, id, bitmap, pushedBitmap=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type &#39;wxBitmap *&#39; at 0x13415690&gt; &gt;, isToggle=0, clientData=None, shortHelpString=&#39;&#39;, longHelpString=&#39;&#39;)</p>
+    <p>def <span class="ident">InsertTool</span>(</p><p>self, pos, id, bitmap, pushedBitmap=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type &#39;wxBitmap *&#39; at 0x13285690&gt; &gt;, isToggle=0, clientData=None, shortHelpString=&#39;&#39;, longHelpString=&#39;&#39;)</p>
     </div>
     
 

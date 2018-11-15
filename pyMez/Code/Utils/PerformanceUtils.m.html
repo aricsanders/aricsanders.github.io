@@ -1171,11 +1171,11 @@ table {
         <span class="n">start_time</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
         <span class="n">result</span><span class="o">=</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">keywordargs</span><span class="p">)</span>
         <span class="n">stop_time</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The function {0} started at {1} and ended at {2}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">function</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span>
+        <span class="k">print</span><span class="p">((</span><span class="s2">&quot;The function {0} started at {1} and ended at {2}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">function</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span>
                                                                         <span class="n">start_time</span><span class="p">,</span>
-                                                                        <span class="n">stop_time</span><span class="p">))</span>
+                                                                        <span class="n">stop_time</span><span class="p">)))</span>
         <span class="n">diff</span><span class="o">=</span><span class="n">stop_time</span><span class="o">-</span><span class="n">start_time</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;It took {0} seconds to run&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">diff</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()))</span>
+        <span class="k">print</span><span class="p">((</span><span class="s2">&quot;It took {0} seconds to run&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">diff</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">())))</span>
         <span class="k">return</span> <span class="n">result</span>
 
     <span class="k">return</span> <span class="n">timed</span>
@@ -1285,11 +1285,11 @@ table {
         <span class="n">start_time</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
         <span class="n">result</span><span class="o">=</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">keywordargs</span><span class="p">)</span>
         <span class="n">stop_time</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The function {0} started at {1} and ended at {2}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">function</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span>
+        <span class="k">print</span><span class="p">((</span><span class="s2">&quot;The function {0} started at {1} and ended at {2}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">function</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span>
                                                                         <span class="n">start_time</span><span class="p">,</span>
-                                                                        <span class="n">stop_time</span><span class="p">))</span>
+                                                                        <span class="n">stop_time</span><span class="p">)))</span>
         <span class="n">diff</span><span class="o">=</span><span class="n">stop_time</span><span class="o">-</span><span class="n">start_time</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;It took {0} seconds to run&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">diff</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()))</span>
+        <span class="k">print</span><span class="p">((</span><span class="s2">&quot;It took {0} seconds to run&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">diff</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">())))</span>
         <span class="k">return</span> <span class="n">result</span>
 
     <span class="k">return</span> <span class="n">timed</span>

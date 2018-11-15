@@ -1491,9 +1491,9 @@ derived in no small part from the work of
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1"># Todo: replace this with wx.html2.Webview</span>
 <span class="kn">import</span>  <span class="nn">wx</span>
-<span class="c1"># import wx.html2</span>
-<span class="k">if</span> <span class="n">wx</span><span class="o">.</span><span class="n">Platform</span> <span class="o">==</span> <span class="s1">&#39;__WXMSW__&#39;</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">wx.lib.iewin_old</span> <span class="kn">as</span> <span class="nn">iewin</span>
+<span class="kn">import</span> <span class="nn">wx.html2</span> <span class="kn">as</span> <span class="nn">iewin</span>
+<span class="c1">#if wx.Platform == &#39;__WXMSW__&#39;:</span>
+<span class="c1">#    import wx.lib.iewin_old as iewin</span>
 <span class="n">wxID_CONTROL_PANEL</span><span class="o">=-</span><span class="mi">1</span>
 <span class="c1">#----------------------------------------------------------------------</span>
 <span class="c1"># Todo: sizer does not respond in y direction</span>
@@ -1509,8 +1509,8 @@ derived in no small part from the work of
         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
         <span class="n">btnSizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span> <span class="o">=</span> <span class="n">iewin</span><span class="o">.</span><span class="n">IEHtmlWindow</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadString</span><span class="p">(</span><span class="n">overview</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span> <span class="o">=</span> <span class="n">iewin</span><span class="o">.</span><span class="n">WebView</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">SetPage</span><span class="p">(</span><span class="n">overview</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
         <span class="n">btn</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Open&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">BU_EXACTFIT</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnOpenButton</span><span class="p">,</span> <span class="n">btn</span><span class="p">)</span>
@@ -1546,7 +1546,7 @@ derived in no small part from the work of
         <span class="n">btnSizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">CENTER</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ComboBox</span><span class="p">(</span>
-                            <span class="bp">self</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">CB_DROPDOWN</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">PROCESS_ENTER</span>
+                            <span class="bp">self</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">CB_DROPDOWN</span>
                             <span class="p">)</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_COMBOBOX</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnLocationSelect</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
@@ -1557,16 +1557,16 @@ derived in no small part from the work of
         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">btnSizer</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">EXPAND</span><span class="p">)</span>
         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">EXPAND</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadUrl</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadURL</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">_set_AddressBar</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+        
         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
         <span class="c1"># Since this is a wx.Window we have to call Layout ourselves</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_SIZE</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnSize</span><span class="p">)</span>
         
         
         <span class="c1">#Added this to make address bar work correctly</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">iewin</span><span class="o">.</span><span class="n">EVT_NavigateComplete2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">after_navigate</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">iewin</span><span class="o">.</span><span class="n">EVT_WEBVIEW_LOADED</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">after_navigate</span><span class="p">)</span>
 
         <span class="c1">## Hook up the event handlers for the IE window.  Using</span>
         <span class="c1">## AddEventSink is how we tell the COM system to look in this</span>
@@ -1582,7 +1582,7 @@ derived in no small part from the work of
         
     <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">string</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Writes test to the ie window&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadString</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">string</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">SetPage</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">string</span><span class="p">),</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">GetText</span><span class="p">()</span>
@@ -1599,13 +1599,13 @@ derived in no small part from the work of
     <span class="k">def</span> <span class="nf">OnLocationSelect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">GetStringSelection</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;OnLocationSelect: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">url</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">Navigate</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadURL</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">=</span><span class="n">url</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">UpdateLocation</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">OnLocationKey</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">GetKeyCode</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">WXK_RETURN</span><span class="p">:</span>
             <span class="n">URL</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">GetValue</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">Navigate</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadURL</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">=</span><span class="n">URL</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">UpdateLocation</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1618,31 +1618,34 @@ derived in no small part from the work of
 
     <span class="k">def</span> <span class="nf">OnOpenButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         
-        <span class="n">dlg</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FileDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;Choose a file&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;*.*&#39;</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">OPEN</span><span class="p">)</span>
+        <span class="n">dlg</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FileDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;Choose a file&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;*.*&#39;</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">FD_OPEN</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">dlg</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_OK</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="o">=</span> <span class="n">dlg</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">Navigate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadURL</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
 
         <span class="k">finally</span><span class="p">:</span>
             <span class="n">dlg</span><span class="o">.</span><span class="n">Destroy</span><span class="p">()</span>
         
    
     <span class="k">def</span> <span class="nf">OnHomeButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">GoHome</span><span class="p">()</span>    <span class="c1">## ET Phone Home!</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadURL</span><span class="p">(</span><span class="s2">&quot;https://aricsanders.github.io/&quot;</span><span class="p">)</span>    <span class="c1">## ET Phone Home!</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">UpdateLocation</span><span class="p">()</span>
         
     <span class="k">def</span> <span class="nf">OnPrevPageButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">GoBack</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">UpdateLocation</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">GoBack</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">UpdateLocation</span><span class="p">()</span>
+        <span class="k">except</span><span class="p">:</span><span class="k">pass</span>
+		
     <span class="k">def</span> <span class="nf">OnNextPageButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">GoForward</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">UpdateLocation</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">UpdateLocation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Updates the location bar with up to self.history_max&quot;&quot;&quot;</span>
         <span class="c1">#There is something wierd about this I think it needs to check if it is busy</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">_get_LocationURL</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">GetCurrentURL</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">history</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
@@ -1661,10 +1664,11 @@ derived in no small part from the work of
         <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">Stop</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">OnSearchPageButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">GoSearch</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadURL</span><span class="p">(</span><span class="s2">&quot;https://www.google.com&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">UpdateLocation</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">OnRefreshPageButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">Refresh</span><span class="p">(</span><span class="n">iewin</span><span class="o">.</span><span class="n">REFRESH_COMPLETELY</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">Reload</span><span class="p">()</span>
 
 
     <span class="c1"># Here are some of the event methods for the IE COM events.  See</span>
@@ -1726,7 +1730,7 @@ derived in no small part from the work of
 <span class="k">def</span> <span class="nf">test_panel</span><span class="p">():</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
     <span class="n">frame</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">Size</span><span class="p">(</span><span class="mi">900</span><span class="p">,</span> <span class="mi">800</span><span class="p">))</span>
-    <span class="n">panel</span><span class="o">=</span><span class="n">IEPanel</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">u&#39;IEPanel&#39;</span><span class="p">,</span>
+    <span class="n">panel</span><span class="o">=</span><span class="n">IEPanel</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;IEPanel&#39;</span><span class="p">,</span>
               <span class="n">parent</span><span class="o">=</span><span class="n">frame</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="mi">350</span><span class="p">,</span> <span class="mi">204</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">Size</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">800</span><span class="p">),</span>
               <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">TAB_TRAVERSAL</span><span class="p">)</span>
     <span class="n">sizer</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">()</span>
@@ -1743,10 +1747,10 @@ derived in no small part from the work of
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
     <span class="n">frame</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">Size</span><span class="p">(</span><span class="mi">900</span><span class="p">,</span> <span class="mi">800</span><span class="p">))</span>
-    <span class="n">panel</span><span class="o">=</span><span class="n">IEPanel</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">u&#39;IEPanel&#39;</span><span class="p">,</span>
+    <span class="n">panel</span><span class="o">=</span><span class="n">IEPanel</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;IEPanel&#39;</span><span class="p">,</span>
               <span class="n">parent</span><span class="o">=</span><span class="n">frame</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="mi">350</span><span class="p">,</span> <span class="mi">204</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">Size</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">800</span><span class="p">),</span>
               <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">TAB_TRAVERSAL</span><span class="p">)</span>
-    <span class="n">sizer</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">()</span>
+    <span class="n">sizer</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
     <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">panel</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">wx</span><span class="o">.</span><span class="n">EXPAND</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">frame</span><span class="o">.</span><span class="n">SetSizerAndFit</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
     <span class="n">frame</span><span class="o">.</span><span class="n">SetSize</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Size</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">))</span>
@@ -1777,7 +1781,7 @@ derived in no small part from the work of
     <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">test_panel</span><span class="p">():</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
     <span class="n">frame</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">Size</span><span class="p">(</span><span class="mi">900</span><span class="p">,</span> <span class="mi">800</span><span class="p">))</span>
-    <span class="n">panel</span><span class="o">=</span><span class="n">IEPanel</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">u&#39;IEPanel&#39;</span><span class="p">,</span>
+    <span class="n">panel</span><span class="o">=</span><span class="n">IEPanel</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;IEPanel&#39;</span><span class="p">,</span>
               <span class="n">parent</span><span class="o">=</span><span class="n">frame</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="mi">350</span><span class="p">,</span> <span class="mi">204</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">Size</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">800</span><span class="p">),</span>
               <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">TAB_TRAVERSAL</span><span class="p">)</span>
     <span class="n">sizer</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">()</span>
@@ -1816,8 +1820,8 @@ derived in no small part from the work of
         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
         <span class="n">btnSizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span> <span class="o">=</span> <span class="n">iewin</span><span class="o">.</span><span class="n">IEHtmlWindow</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadString</span><span class="p">(</span><span class="n">overview</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span> <span class="o">=</span> <span class="n">iewin</span><span class="o">.</span><span class="n">WebView</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">SetPage</span><span class="p">(</span><span class="n">overview</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
         <span class="n">btn</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Open&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">BU_EXACTFIT</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnOpenButton</span><span class="p">,</span> <span class="n">btn</span><span class="p">)</span>
@@ -1853,7 +1857,7 @@ derived in no small part from the work of
         <span class="n">btnSizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">CENTER</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ComboBox</span><span class="p">(</span>
-                            <span class="bp">self</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">CB_DROPDOWN</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">PROCESS_ENTER</span>
+                            <span class="bp">self</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">CB_DROPDOWN</span>
                             <span class="p">)</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_COMBOBOX</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnLocationSelect</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
@@ -1864,16 +1868,16 @@ derived in no small part from the work of
         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">btnSizer</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">EXPAND</span><span class="p">)</span>
         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">EXPAND</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadUrl</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadURL</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">_set_AddressBar</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+        
         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
         <span class="c1"># Since this is a wx.Window we have to call Layout ourselves</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_SIZE</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnSize</span><span class="p">)</span>
         
         
         <span class="c1">#Added this to make address bar work correctly</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">iewin</span><span class="o">.</span><span class="n">EVT_NavigateComplete2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">after_navigate</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">iewin</span><span class="o">.</span><span class="n">EVT_WEBVIEW_LOADED</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">after_navigate</span><span class="p">)</span>
 
         <span class="c1">## Hook up the event handlers for the IE window.  Using</span>
         <span class="c1">## AddEventSink is how we tell the COM system to look in this</span>
@@ -1889,7 +1893,7 @@ derived in no small part from the work of
         
     <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">string</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Writes test to the ie window&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadString</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">string</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">SetPage</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">string</span><span class="p">),</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">GetText</span><span class="p">()</span>
@@ -1906,13 +1910,13 @@ derived in no small part from the work of
     <span class="k">def</span> <span class="nf">OnLocationSelect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">GetStringSelection</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;OnLocationSelect: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">url</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">Navigate</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadURL</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">=</span><span class="n">url</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">UpdateLocation</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">OnLocationKey</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">GetKeyCode</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">WXK_RETURN</span><span class="p">:</span>
             <span class="n">URL</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">GetValue</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">Navigate</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadURL</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">=</span><span class="n">URL</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">UpdateLocation</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1925,31 +1929,34 @@ derived in no small part from the work of
 
     <span class="k">def</span> <span class="nf">OnOpenButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         
-        <span class="n">dlg</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FileDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;Choose a file&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;*.*&#39;</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">OPEN</span><span class="p">)</span>
+        <span class="n">dlg</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FileDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;Choose a file&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;*.*&#39;</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">FD_OPEN</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">dlg</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_OK</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="o">=</span> <span class="n">dlg</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">Navigate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadURL</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
 
         <span class="k">finally</span><span class="p">:</span>
             <span class="n">dlg</span><span class="o">.</span><span class="n">Destroy</span><span class="p">()</span>
         
    
     <span class="k">def</span> <span class="nf">OnHomeButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">GoHome</span><span class="p">()</span>    <span class="c1">## ET Phone Home!</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadURL</span><span class="p">(</span><span class="s2">&quot;https://aricsanders.github.io/&quot;</span><span class="p">)</span>    <span class="c1">## ET Phone Home!</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">UpdateLocation</span><span class="p">()</span>
         
     <span class="k">def</span> <span class="nf">OnPrevPageButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">GoBack</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">UpdateLocation</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">GoBack</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">UpdateLocation</span><span class="p">()</span>
+        <span class="k">except</span><span class="p">:</span><span class="k">pass</span>
+		
     <span class="k">def</span> <span class="nf">OnNextPageButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">GoForward</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">UpdateLocation</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">UpdateLocation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Updates the location bar with up to self.history_max&quot;&quot;&quot;</span>
         <span class="c1">#There is something wierd about this I think it needs to check if it is busy</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">_get_LocationURL</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">GetCurrentURL</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">history</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
@@ -1968,10 +1975,11 @@ derived in no small part from the work of
         <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">Stop</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">OnSearchPageButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">GoSearch</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadURL</span><span class="p">(</span><span class="s2">&quot;https://www.google.com&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">UpdateLocation</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">OnRefreshPageButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">Refresh</span><span class="p">(</span><span class="n">iewin</span><span class="o">.</span><span class="n">REFRESH_COMPLETELY</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">Reload</span><span class="p">()</span>
 
 
     <span class="c1"># Here are some of the event methods for the IE COM events.  See</span>
@@ -3008,8 +3016,8 @@ integer.  On the other platforms this method returns zero.</p></div>
     <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="o">=</span> <span class="s2">&quot;http://wxPython.org/&quot;</span>
     <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
     <span class="n">btnSizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">ie</span> <span class="o">=</span> <span class="n">iewin</span><span class="o">.</span><span class="n">IEHtmlWindow</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadString</span><span class="p">(</span><span class="n">overview</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ie</span> <span class="o">=</span> <span class="n">iewin</span><span class="o">.</span><span class="n">WebView</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">SetPage</span><span class="p">(</span><span class="n">overview</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
     <span class="n">btn</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Open&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">BU_EXACTFIT</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnOpenButton</span><span class="p">,</span> <span class="n">btn</span><span class="p">)</span>
     <span class="n">btnSizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">btn</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">EXPAND</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -3037,7 +3045,7 @@ integer.  On the other platforms this method returns zero.</p></div>
     <span class="n">btnSizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">CENTER</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     
     <span class="bp">self</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ComboBox</span><span class="p">(</span>
-                        <span class="bp">self</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">CB_DROPDOWN</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">PROCESS_ENTER</span>
+                        <span class="bp">self</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">CB_DROPDOWN</span>
                         <span class="p">)</span>
     
     <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_COMBOBOX</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnLocationSelect</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
@@ -3046,16 +3054,16 @@ integer.  On the other platforms this method returns zero.</p></div>
     <span class="n">btnSizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">EXPAND</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">btnSizer</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">EXPAND</span><span class="p">)</span>
     <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">EXPAND</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadUrl</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadURL</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">_set_AddressBar</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+    
     <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
     <span class="c1"># Since this is a wx.Window we have to call Layout ourselves</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_SIZE</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OnSize</span><span class="p">)</span>
     
     
     <span class="c1">#Added this to make address bar work correctly</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">iewin</span><span class="o">.</span><span class="n">EVT_NavigateComplete2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">after_navigate</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">iewin</span><span class="o">.</span><span class="n">EVT_WEBVIEW_LOADED</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">after_navigate</span><span class="p">)</span>
 </pre></div>
 
   </div>
@@ -8226,7 +8234,7 @@ equivalient to self.GetParent().NavigateIn().</p></div>
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pyMez.Code.FrontEnds.IEPanel.IEPanel.OnHomeButton', this);">Show source &equiv;</a></p>
   <div id="source-pyMez.Code.FrontEnds.IEPanel.IEPanel.OnHomeButton" class="source">
     <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">OnHomeButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">GoHome</span><span class="p">()</span>    <span class="c1">## ET Phone Home!</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadURL</span><span class="p">(</span><span class="s2">&quot;https://aricsanders.github.io/&quot;</span><span class="p">)</span>    <span class="c1">## ET Phone Home!</span>
     
     <span class="bp">self</span><span class="o">.</span><span class="n">UpdateLocation</span><span class="p">()</span>
 </pre></div>
@@ -8251,7 +8259,7 @@ equivalient to self.GetParent().NavigateIn().</p></div>
     <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">OnLocationKey</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">evt</span><span class="o">.</span><span class="n">GetKeyCode</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">WXK_RETURN</span><span class="p">:</span>
         <span class="n">URL</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">GetValue</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">Navigate</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadURL</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">=</span><span class="n">URL</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">UpdateLocation</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
@@ -8278,7 +8286,7 @@ equivalient to self.GetParent().NavigateIn().</p></div>
     <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">OnLocationSelect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
     <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">GetStringSelection</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;OnLocationSelect: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">url</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">Navigate</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadURL</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">=</span><span class="n">url</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">UpdateLocation</span><span class="p">()</span>
 </pre></div>
@@ -8324,11 +8332,11 @@ equivalient to self.GetParent().NavigateIn().</p></div>
   <div id="source-pyMez.Code.FrontEnds.IEPanel.IEPanel.OnOpenButton" class="source">
     <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">OnOpenButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
     
-    <span class="n">dlg</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FileDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;Choose a file&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;*.*&#39;</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">OPEN</span><span class="p">)</span>
+    <span class="n">dlg</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FileDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;Choose a file&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;*.*&#39;</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">FD_OPEN</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">dlg</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_OK</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="o">=</span> <span class="n">dlg</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">Navigate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadURL</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
     <span class="k">finally</span><span class="p">:</span>
         <span class="n">dlg</span><span class="o">.</span><span class="n">Destroy</span><span class="p">()</span>
 </pre></div>
@@ -8374,8 +8382,10 @@ equivalient to self.GetParent().NavigateIn().</p></div>
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pyMez.Code.FrontEnds.IEPanel.IEPanel.OnPrevPageButton', this);">Show source &equiv;</a></p>
   <div id="source-pyMez.Code.FrontEnds.IEPanel.IEPanel.OnPrevPageButton" class="source">
     <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">OnPrevPageButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">GoBack</span><span class="p">()</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">UpdateLocation</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">GoBack</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">UpdateLocation</span><span class="p">()</span>
+    <span class="k">except</span><span class="p">:</span><span class="k">pass</span>
 </pre></div>
 
   </div>
@@ -8396,7 +8406,7 @@ equivalient to self.GetParent().NavigateIn().</p></div>
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pyMez.Code.FrontEnds.IEPanel.IEPanel.OnRefreshPageButton', this);">Show source &equiv;</a></p>
   <div id="source-pyMez.Code.FrontEnds.IEPanel.IEPanel.OnRefreshPageButton" class="source">
     <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">OnRefreshPageButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">Refresh</span><span class="p">(</span><span class="n">iewin</span><span class="o">.</span><span class="n">REFRESH_COMPLETELY</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">Reload</span><span class="p">()</span>
 </pre></div>
 
   </div>
@@ -8417,7 +8427,8 @@ equivalient to self.GetParent().NavigateIn().</p></div>
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-pyMez.Code.FrontEnds.IEPanel.IEPanel.OnSearchPageButton', this);">Show source &equiv;</a></p>
   <div id="source-pyMez.Code.FrontEnds.IEPanel.IEPanel.OnSearchPageButton" class="source">
     <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">OnSearchPageButton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">GoSearch</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadURL</span><span class="p">(</span><span class="s2">&quot;https://www.google.com&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">UpdateLocation</span><span class="p">()</span>
 </pre></div>
 
   </div>
@@ -11775,7 +11786,7 @@ it) unconditionally.</p></div>
     <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">UpdateLocation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Updates the location bar with up to self.history_max&quot;&quot;&quot;</span>
     <span class="c1">#There is something wierd about this I think it needs to check if it is busy</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">_get_LocationURL</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">GetCurrentURL</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">history</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
@@ -12018,7 +12029,7 @@ like menu bar (un)wrapping or (dis)appearance of the scrollbars.</p></div>
   <div id="source-pyMez.Code.FrontEnds.IEPanel.IEPanel.write" class="source">
     <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">string</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Writes test to the ie window&quot;&quot;&quot;</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">LoadString</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">string</span><span class="p">))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ie</span><span class="o">.</span><span class="n">SetPage</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">string</span><span class="p">),</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 
   </div>

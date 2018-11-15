@@ -1250,9 +1250,9 @@ or add files on disk, full directories, or strings as files.</p>
                   <span class="s2">&quot;path&quot;</span><span class="p">:</span><span class="bp">None</span><span class="p">,</span>
                   <span class="s2">&quot;files&quot;</span><span class="p">:</span><span class="bp">None</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">=</span><span class="p">{}</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
         <span class="k">if</span> <span class="n">file_path</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
@@ -1280,7 +1280,10 @@ or add files on disk, full directories, or strings as files.</p>
             <span class="k">pass</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;temp_directory&quot;</span><span class="p">]:</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">&quot;./Temp&quot;</span><span class="p">)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">&quot;./Temp&quot;</span><span class="p">)</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="k">pass</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;temp_directory&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;./Temp&quot;</span>
             <span class="n">temp_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;temp_directory&quot;</span><span class="p">],</span><span class="s2">&quot;temp_file&quot;</span><span class="p">)</span>
             <span class="n">temp_extracted</span><span class="o">=</span><span class="n">extract_all</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">zip_file</span><span class="p">,</span><span class="n">temp_path</span><span class="p">)</span>
@@ -1334,7 +1337,7 @@ or add files on disk, full directories, or strings as files.</p>
     <span class="n">new_zip</span><span class="o">.</span><span class="n">add_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span><span class="n">archive_name</span><span class="o">=</span><span class="s2">&quot;New_directory/file.txt&quot;</span><span class="p">)</span>
     <span class="c1">#new_zip.add_all_from_directory(r&quot;C:\Users\sandersa\PyCharm Projects\Jupyter-Notebooks\Radical_Correction_Files&quot;)</span>
     <span class="n">new_zip</span><span class="o">.</span><span class="n">write_string</span><span class="p">(</span><span class="n">test_string</span><span class="p">,</span><span class="s2">&quot;String_test.txt&quot;</span><span class="p">)</span>
-    <span class="k">print</span> <span class="n">new_zip</span><span class="o">.</span><span class="n">files</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">new_zip</span><span class="o">.</span><span class="n">files</span><span class="p">)</span>
     <span class="n">new_zip</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="c1">#-----------------------------------------------------------------------------</span>
 <span class="c1"># Module Runner</span>
@@ -1418,7 +1421,7 @@ or add files on disk, full directories, or strings as files.</p>
     <span class="n">new_zip</span><span class="o">.</span><span class="n">add_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span><span class="n">archive_name</span><span class="o">=</span><span class="s2">&quot;New_directory/file.txt&quot;</span><span class="p">)</span>
     <span class="c1">#new_zip.add_all_from_directory(r&quot;C:\Users\sandersa\PyCharm Projects\Jupyter-Notebooks\Radical_Correction_Files&quot;)</span>
     <span class="n">new_zip</span><span class="o">.</span><span class="n">write_string</span><span class="p">(</span><span class="n">test_string</span><span class="p">,</span><span class="s2">&quot;String_test.txt&quot;</span><span class="p">)</span>
-    <span class="k">print</span> <span class="n">new_zip</span><span class="o">.</span><span class="n">files</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">new_zip</span><span class="o">.</span><span class="n">files</span><span class="p">)</span>
     <span class="n">new_zip</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 
@@ -1472,9 +1475,9 @@ and save zip archives.
                   <span class="s2">&quot;path&quot;</span><span class="p">:</span><span class="bp">None</span><span class="p">,</span>
                   <span class="s2">&quot;files&quot;</span><span class="p">:</span><span class="bp">None</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">=</span><span class="p">{}</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
         <span class="k">if</span> <span class="n">file_path</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
@@ -1502,7 +1505,10 @@ and save zip archives.
             <span class="k">pass</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;temp_directory&quot;</span><span class="p">]:</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">&quot;./Temp&quot;</span><span class="p">)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">&quot;./Temp&quot;</span><span class="p">)</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="k">pass</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;temp_directory&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;./Temp&quot;</span>
             <span class="n">temp_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;temp_directory&quot;</span><span class="p">],</span><span class="s2">&quot;temp_file&quot;</span><span class="p">)</span>
             <span class="n">temp_extracted</span><span class="o">=</span><span class="n">extract_all</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">zip_file</span><span class="p">,</span><span class="n">temp_path</span><span class="p">)</span>
@@ -1603,9 +1609,9 @@ and save zip archives.
               <span class="s2">&quot;path&quot;</span><span class="p">:</span><span class="bp">None</span><span class="p">,</span>
               <span class="s2">&quot;files&quot;</span><span class="p">:</span><span class="bp">None</span><span class="p">}</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">=</span><span class="p">{}</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
     <span class="k">if</span> <span class="n">file_path</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
@@ -1752,7 +1758,10 @@ and save zip archives.
         <span class="k">pass</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;temp_directory&quot;</span><span class="p">]:</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">&quot;./Temp&quot;</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">&quot;./Temp&quot;</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">pass</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;temp_directory&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;./Temp&quot;</span>
         <span class="n">temp_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;temp_directory&quot;</span><span class="p">],</span><span class="s2">&quot;temp_file&quot;</span><span class="p">)</span>
         <span class="n">temp_extracted</span><span class="o">=</span><span class="n">extract_all</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">zip_file</span><span class="p">,</span><span class="n">temp_path</span><span class="p">)</span>

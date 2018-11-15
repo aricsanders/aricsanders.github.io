@@ -1159,6 +1159,7 @@ table {
       
   <ul>
     <li class="mono"><a href="#pyMez.Code.Analysis.Fitting.StringTypes">StringTypes</a></li>
+    <li class="mono"><a href="#pyMez.Code.Analysis.Fitting.type_names">type_names</a></li>
   </ul>
 
 	  </div>
@@ -1253,6 +1254,12 @@ data.</p>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="c1">#-----------------------------------------------------------------------------</span>
 <span class="c1"># Third Party Imports</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">Code.Utils.Types</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The module pyMez.Code.Utils.Types was not found or had an error,&quot;</span>
+          <span class="s2">&quot;please check module or put it on the python path&quot;</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">ImportError</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -1343,13 +1350,13 @@ data.</p>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">**</span><span class="n">options</span><span class="p">):</span>
         <span class="n">defaults</span><span class="o">=</span> <span class="p">{</span><span class="s2">&quot;parameters&quot;</span><span class="p">:</span><span class="bp">None</span><span class="p">,</span><span class="s2">&quot;variables&quot;</span><span class="p">:</span><span class="bp">None</span><span class="p">,</span><span class="s2">&quot;equation&quot;</span><span class="p">:</span><span class="bp">None</span><span class="p">,</span><span class="s2">&quot;parameter_values&quot;</span><span class="p">:{}}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">=</span><span class="p">{}</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
         <span class="c1"># fix any lists</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">,</span><span class="s2">&quot;variables&quot;</span><span class="p">]:</span>
-            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">item</span><span class="p">])</span> <span class="ow">is</span> <span class="n">StringType</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">item</span><span class="p">],</span> <span class="n">StringType</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">item</span><span class="p">])</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">item</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="n">item</span><span class="o">+</span><span class="s2">&quot;_symbols&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">sympy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">item</span><span class="p">])</span>
@@ -1387,9 +1394,9 @@ data.</p>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">defaults</span><span class="o">=</span> <span class="p">{</span><span class="s2">&quot;initial_guess&quot;</span><span class="p">:{</span><span class="n">parameter</span><span class="p">:</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">},</span><span class="s2">&quot;fixed_parameters&quot;</span><span class="p">:</span><span class="bp">None</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fit_options</span><span class="o">=</span><span class="p">{}</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">fit_options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">fit_options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
 
         <span class="k">def</span> <span class="nf">fit_f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
@@ -1409,10 +1416,14 @@ data.</p>
         <span class="n">fit_parameter_dictionary</span><span class="o">=</span><span class="p">{</span><span class="n">parameter</span><span class="p">:</span><span class="n">fit_parameters</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="k">for</span> <span class="n">index</span><span class="p">,</span><span class="n">parameter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">)}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_parameters</span><span class="p">(</span><span class="n">fit_parameter_dictionary</span><span class="p">)</span>
 
+
+    <span class="k">def</span> <span class="nf">__div__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__truediv__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Defines addition for the class, if it is another functional model add the models else just change the</span>
 <span class="sd">        equation&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="n">FunctionalModel</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="n">FunctionalModel</span><span class="p">):</span>
             <span class="n">parameters</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">parameters</span><span class="p">))</span>
             <span class="n">variables</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">variables</span><span class="p">))</span>
             <span class="c1">#print(&quot;{0} is {1}&quot;.format(&quot;parameters&quot;,parameters))</span>
@@ -1427,7 +1438,7 @@ data.</p>
         <span class="k">return</span> <span class="n">new_function</span>
     <span class="k">def</span> <span class="nf">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Defines subtraction for the class&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="n">FunctionalModel</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="n">FunctionalModel</span><span class="p">):</span>
             <span class="n">parameters</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">parameters</span><span class="p">))</span>
             <span class="n">variables</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">variables</span><span class="p">))</span>
             <span class="c1">#print(&quot;{0} is {1}&quot;.format(&quot;parameters&quot;,parameters))</span>
@@ -1442,7 +1453,7 @@ data.</p>
         <span class="k">return</span> <span class="n">new_function</span>
     <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Defines multiplication for the class&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="n">FunctionalModel</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="n">FunctionalModel</span><span class="p">):</span>
             <span class="n">parameters</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">parameters</span><span class="p">))</span>
             <span class="n">variables</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">variables</span><span class="p">))</span>
             <span class="c1">#print(&quot;{0} is {1}&quot;.format(&quot;parameters&quot;,parameters))</span>
@@ -1458,7 +1469,7 @@ data.</p>
 
     <span class="k">def</span> <span class="nf">__pow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Defines power for the class&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="n">FunctionalModel</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="n">FunctionalModel</span><span class="p">):</span>
             <span class="n">parameters</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">parameters</span><span class="p">))</span>
             <span class="n">variables</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">variables</span><span class="p">))</span>
             <span class="c1">#print(&quot;{0} is {1}&quot;.format(&quot;parameters&quot;,parameters))</span>
@@ -1472,9 +1483,9 @@ data.</p>
         <span class="n">new_function</span><span class="o">=</span><span class="n">FunctionalModel</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span><span class="n">variables</span><span class="o">=</span><span class="n">variables</span><span class="p">,</span><span class="n">equation</span><span class="o">=</span><span class="n">equation</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">new_function</span>
 
-    <span class="k">def</span> <span class="nf">__div__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Defines division for the class&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="n">FunctionalModel</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="n">FunctionalModel</span><span class="p">):</span>
             <span class="n">parameters</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">parameters</span><span class="p">))</span>
             <span class="n">variables</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">variables</span><span class="p">))</span>
             <span class="c1">#print(&quot;{0} is {1}&quot;.format(&quot;parameters&quot;,parameters))</span>
@@ -1511,9 +1522,9 @@ data.</p>
         <span class="sd">&quot;&quot;&quot;Fit a data set and show the results&quot;&quot;&quot;</span>
         <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="bp">True</span><span class="p">}</span>
         <span class="n">plot_options</span><span class="o">=</span><span class="p">{}</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">plot_options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">plot_options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">fit_data</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span><span class="n">y_data</span><span class="p">,</span><span class="o">**</span><span class="n">plot_options</span><span class="p">)</span>
@@ -1586,9 +1597,9 @@ data.</p>
                    <span class="s2">&quot;random_seed&quot;</span><span class="p">:</span><span class="bp">None</span><span class="p">,</span>
                    <span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">=</span><span class="p">{}</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
         <span class="c1"># set the self.model attribute</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]:</span>
@@ -1688,7 +1699,7 @@ data.</p>
     <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x_data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns the simulated data for x=x_data, to have deterministic responses, set self.random_seed&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">x_data</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">]:</span>
-            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">x_data</span><span class="p">)</span> <span class="ow">is</span> <span class="n">ListType</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">ListType</span><span class="p">):</span>
                 <span class="n">x_data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_data</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">x_data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x_data</span><span class="p">])</span>
@@ -1715,7 +1726,7 @@ data.</p>
         <span class="c1">#print(data)</span>
     <span class="n">initial_guess</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">results</span><span class="o">=</span><span class="n">least_squares_fit</span><span class="p">(</span><span class="n">line_function</span><span class="p">,</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">initial_guess</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The fit of data is y={1:3.2g} x + {0:3.2g}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">results</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">((</span><span class="s2">&quot;The fit of data is y={1:3.2g} x + {0:3.2g}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">results</span><span class="p">)))</span>
 
 
 <span class="c1">#-----------------------------------------------------------------------------</span>
@@ -1913,7 +1924,7 @@ with the function in the form of f(parameter_list,x)</p></div>
         <span class="c1">#print(data)</span>
     <span class="n">initial_guess</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">results</span><span class="o">=</span><span class="n">least_squares_fit</span><span class="p">(</span><span class="n">line_function</span><span class="p">,</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">initial_guess</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The fit of data is y={1:3.2g} x + {0:3.2g}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">results</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">((</span><span class="s2">&quot;The fit of data is y={1:3.2g} x + {0:3.2g}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">results</span><span class="p">)))</span>
 </pre></div>
 
   </div>
@@ -1956,9 +1967,9 @@ called as a function on a single point or an numpy array.</p></div>
                    <span class="s2">&quot;random_seed&quot;</span><span class="p">:</span><span class="bp">None</span><span class="p">,</span>
                    <span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">=</span><span class="p">{}</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
         <span class="c1"># set the self.model attribute</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]:</span>
@@ -2058,7 +2069,7 @@ called as a function on a single point or an numpy array.</p></div>
     <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x_data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns the simulated data for x=x_data, to have deterministic responses, set self.random_seed&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">x_data</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">]:</span>
-            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">x_data</span><span class="p">)</span> <span class="ow">is</span> <span class="n">ListType</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">ListType</span><span class="p">):</span>
                 <span class="n">x_data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_data</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">x_data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x_data</span><span class="p">])</span>
@@ -2165,9 +2176,9 @@ called as a function on a single point or an numpy array.</p></div>
                <span class="s2">&quot;random_seed&quot;</span><span class="p">:</span><span class="bp">None</span><span class="p">,</span>
                <span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])}</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">=</span><span class="p">{}</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
     <span class="c1"># set the self.model attribute</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]:</span>
@@ -2366,13 +2377,13 @@ line(1)</p></div>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">**</span><span class="n">options</span><span class="p">):</span>
         <span class="n">defaults</span><span class="o">=</span> <span class="p">{</span><span class="s2">&quot;parameters&quot;</span><span class="p">:</span><span class="bp">None</span><span class="p">,</span><span class="s2">&quot;variables&quot;</span><span class="p">:</span><span class="bp">None</span><span class="p">,</span><span class="s2">&quot;equation&quot;</span><span class="p">:</span><span class="bp">None</span><span class="p">,</span><span class="s2">&quot;parameter_values&quot;</span><span class="p">:{}}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">=</span><span class="p">{}</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
         <span class="c1"># fix any lists</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">,</span><span class="s2">&quot;variables&quot;</span><span class="p">]:</span>
-            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">item</span><span class="p">])</span> <span class="ow">is</span> <span class="n">StringType</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">item</span><span class="p">],</span> <span class="n">StringType</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">item</span><span class="p">])</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">item</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="n">item</span><span class="o">+</span><span class="s2">&quot;_symbols&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">sympy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">item</span><span class="p">])</span>
@@ -2410,9 +2421,9 @@ line(1)</p></div>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">defaults</span><span class="o">=</span> <span class="p">{</span><span class="s2">&quot;initial_guess&quot;</span><span class="p">:{</span><span class="n">parameter</span><span class="p">:</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">},</span><span class="s2">&quot;fixed_parameters&quot;</span><span class="p">:</span><span class="bp">None</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fit_options</span><span class="o">=</span><span class="p">{}</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">fit_options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">fit_options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
 
         <span class="k">def</span> <span class="nf">fit_f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
@@ -2432,10 +2443,14 @@ line(1)</p></div>
         <span class="n">fit_parameter_dictionary</span><span class="o">=</span><span class="p">{</span><span class="n">parameter</span><span class="p">:</span><span class="n">fit_parameters</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="k">for</span> <span class="n">index</span><span class="p">,</span><span class="n">parameter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">)}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_parameters</span><span class="p">(</span><span class="n">fit_parameter_dictionary</span><span class="p">)</span>
 
+
+    <span class="k">def</span> <span class="nf">__div__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__truediv__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Defines addition for the class, if it is another functional model add the models else just change the</span>
 <span class="sd">        equation&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="n">FunctionalModel</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="n">FunctionalModel</span><span class="p">):</span>
             <span class="n">parameters</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">parameters</span><span class="p">))</span>
             <span class="n">variables</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">variables</span><span class="p">))</span>
             <span class="c1">#print(&quot;{0} is {1}&quot;.format(&quot;parameters&quot;,parameters))</span>
@@ -2450,7 +2465,7 @@ line(1)</p></div>
         <span class="k">return</span> <span class="n">new_function</span>
     <span class="k">def</span> <span class="nf">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Defines subtraction for the class&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="n">FunctionalModel</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="n">FunctionalModel</span><span class="p">):</span>
             <span class="n">parameters</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">parameters</span><span class="p">))</span>
             <span class="n">variables</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">variables</span><span class="p">))</span>
             <span class="c1">#print(&quot;{0} is {1}&quot;.format(&quot;parameters&quot;,parameters))</span>
@@ -2465,7 +2480,7 @@ line(1)</p></div>
         <span class="k">return</span> <span class="n">new_function</span>
     <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Defines multiplication for the class&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="n">FunctionalModel</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="n">FunctionalModel</span><span class="p">):</span>
             <span class="n">parameters</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">parameters</span><span class="p">))</span>
             <span class="n">variables</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">variables</span><span class="p">))</span>
             <span class="c1">#print(&quot;{0} is {1}&quot;.format(&quot;parameters&quot;,parameters))</span>
@@ -2481,7 +2496,7 @@ line(1)</p></div>
 
     <span class="k">def</span> <span class="nf">__pow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Defines power for the class&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="n">FunctionalModel</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="n">FunctionalModel</span><span class="p">):</span>
             <span class="n">parameters</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">parameters</span><span class="p">))</span>
             <span class="n">variables</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">variables</span><span class="p">))</span>
             <span class="c1">#print(&quot;{0} is {1}&quot;.format(&quot;parameters&quot;,parameters))</span>
@@ -2495,9 +2510,9 @@ line(1)</p></div>
         <span class="n">new_function</span><span class="o">=</span><span class="n">FunctionalModel</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span><span class="n">variables</span><span class="o">=</span><span class="n">variables</span><span class="p">,</span><span class="n">equation</span><span class="o">=</span><span class="n">equation</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">new_function</span>
 
-    <span class="k">def</span> <span class="nf">__div__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Defines division for the class&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="n">FunctionalModel</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="n">FunctionalModel</span><span class="p">):</span>
             <span class="n">parameters</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">parameters</span><span class="p">))</span>
             <span class="n">variables</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">variables</span><span class="p">))</span>
             <span class="c1">#print(&quot;{0} is {1}&quot;.format(&quot;parameters&quot;,parameters))</span>
@@ -2534,9 +2549,9 @@ line(1)</p></div>
         <span class="sd">&quot;&quot;&quot;Fit a data set and show the results&quot;&quot;&quot;</span>
         <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="bp">True</span><span class="p">}</span>
         <span class="n">plot_options</span><span class="o">=</span><span class="p">{}</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">plot_options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">plot_options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">fit_data</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span><span class="n">y_data</span><span class="p">,</span><span class="o">**</span><span class="n">plot_options</span><span class="p">)</span>
@@ -2655,13 +2670,13 @@ line(1)</p></div>
     <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">**</span><span class="n">options</span><span class="p">):</span>
     <span class="n">defaults</span><span class="o">=</span> <span class="p">{</span><span class="s2">&quot;parameters&quot;</span><span class="p">:</span><span class="bp">None</span><span class="p">,</span><span class="s2">&quot;variables&quot;</span><span class="p">:</span><span class="bp">None</span><span class="p">,</span><span class="s2">&quot;equation&quot;</span><span class="p">:</span><span class="bp">None</span><span class="p">,</span><span class="s2">&quot;parameter_values&quot;</span><span class="p">:{}}</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">=</span><span class="p">{}</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
     <span class="c1"># fix any lists</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">,</span><span class="s2">&quot;variables&quot;</span><span class="p">]:</span>
-        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">item</span><span class="p">])</span> <span class="ow">is</span> <span class="n">StringType</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">item</span><span class="p">],</span> <span class="n">StringType</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">item</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">item</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="n">item</span><span class="o">+</span><span class="s2">&quot;_symbols&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">sympy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">item</span><span class="p">])</span>
@@ -2780,9 +2795,9 @@ line(1)</p></div>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">defaults</span><span class="o">=</span> <span class="p">{</span><span class="s2">&quot;initial_guess&quot;</span><span class="p">:{</span><span class="n">parameter</span><span class="p">:</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">},</span><span class="s2">&quot;fixed_parameters&quot;</span><span class="p">:</span><span class="bp">None</span><span class="p">}</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">fit_options</span><span class="o">=</span><span class="p">{}</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fit_options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fit_options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
     <span class="k">def</span> <span class="nf">fit_f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">clear_parameters</span><span class="p">()</span>
@@ -2880,9 +2895,9 @@ Does not add a constant of integration.</p></div>
     <span class="sd">&quot;&quot;&quot;Fit a data set and show the results&quot;&quot;&quot;</span>
     <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="bp">True</span><span class="p">}</span>
     <span class="n">plot_options</span><span class="o">=</span><span class="p">{}</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="n">plot_options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="n">plot_options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">fit_data</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span><span class="n">y_data</span><span class="p">,</span><span class="o">**</span><span class="n">plot_options</span><span class="p">)</span>
     <span class="n">figure</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="s2">&quot;Fit&quot;</span><span class="p">)</span>
@@ -2963,6 +2978,14 @@ Does not add a constant of integration.</p></div>
     <h2 class="section-title" id="header-variables">Module variables</h2>
       <div class="item">
       <p id="pyMez.Code.Analysis.Fitting.StringTypes" class="name">var <span class="ident">StringTypes</span></p>
+      
+  
+  <div class="source_cont">
+</div>
+
+      </div>
+      <div class="item">
+      <p id="pyMez.Code.Analysis.Fitting.type_names" class="name">var <span class="ident">type_names</span></p>
       
   
   <div class="source_cont">

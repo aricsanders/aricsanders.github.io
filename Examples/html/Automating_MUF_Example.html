@@ -11807,7 +11807,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># to use the python-.net bridge</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># to use the python-.net bridge</span>
 <span class="kn">import</span> <span class="nn">clr</span>
 <span class="c1"># import sys for path</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -11852,10 +11852,10 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># now we can call the classes as python classes</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># now we can call the classes as python classes</span>
 <span class="c1"># but we must trigger the OnLoad event to create the proper variables</span>
 <span class="c1"># We must create a .net event first</span>
-<span class="kn">from</span> <span class="nn">System</span> <span class="k">import</span> <span class="n">EventArgs</span>
+<span class="kn">from</span> <span class="nn">System</span> <span class="kn">import</span> <span class="n">EventArgs</span>
 <span class="n">event</span><span class="o">=</span><span class="n">EventArgs</span><span class="p">()</span>
 <span class="c1"># now if we want to run VNAUncertainty we create an instance and intialize it</span>
 <span class="n">vna</span><span class="o">=</span><span class="n">VNAUncertainty</span><span class="o">.</span><span class="n">VNAUncertainty</span><span class="p">()</span>
@@ -11881,7 +11881,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># the basic command that loads a menu is .myOpenMenu</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># the basic command that loads a menu is .myOpenMenu</span>
 <span class="c1"># We choose a menu that exits</span>
 <span class="n">vna</span><span class="o">.</span><span class="n">myOpenMenu</span><span class="p">(</span><span class="s2">r&quot;C:\Share\MUF_FILES\SOL_new.vnauncert_archive&quot;</span><span class="p">)</span>
 </pre></div>
@@ -11905,7 +11905,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># We then call RunCalibration in order to run VNAUncertainty</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># We then call RunCalibration in order to run VNAUncertainty</span>
 <span class="c1"># This takes ~3seconds and will create a set of MUF files in a default location</span>
 <span class="n">vna</span><span class="o">.</span><span class="n">RunCalibration</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
@@ -11929,7 +11929,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># we close the application after we are done</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># we close the application after we are done</span>
 <span class="n">vna</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
 </pre></div>
 
@@ -11952,7 +11952,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># If we wanted to do the same thing with Measurement.exe we would</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># If we wanted to do the same thing with Measurement.exe we would</span>
 <span class="c1"># initialize the class and we can a plot remotely</span>
 <span class="n">measurement</span><span class="o">=</span><span class="n">Measurement</span><span class="o">.</span><span class="n">Measurement</span><span class="p">()</span>
 <span class="n">measurement</span><span class="o">.</span><span class="n">OnLoad</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
@@ -11968,7 +11968,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># we open an existing .meas file</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># we open an existing .meas file</span>
 <span class="n">measurement</span><span class="o">.</span><span class="n">myOpenMenu</span><span class="p">(</span><span class="s2">r&quot;C:\8510calfiles\35CalComp\MUF_results\DUTs\M105P1.meas&quot;</span><span class="p">)</span>
 <span class="c1">#measurement.Run()</span>
 </pre></div>
@@ -11983,7 +11983,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># we can use the method .SavePlotToDisk to export data. </span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># we can use the method .SavePlotToDisk to export data. </span>
 <span class="c1"># The integers are parameter,plot_type, curve_type</span>
 <span class="c1"># parameter S11=0,..</span>
 <span class="c1"># plot_type Linear Magnitude = 1</span>
@@ -12012,7 +12012,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># we can also run a post processor in the same way</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># we can also run a post processor in the same way</span>
 <span class="n">post</span><span class="o">=</span><span class="n">PostProcessor</span><span class="o">.</span><span class="n">PostProcessor</span><span class="p">()</span>
 <span class="n">post</span><span class="o">.</span><span class="n">OnLoad</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
 </pre></div>
@@ -12027,7 +12027,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">post</span><span class="o">.</span><span class="n">myOpenMenu</span><span class="p">(</span><span class="s2">r&quot;C:\Share\MUF_FILES\Step 9 - Correct DUTs to 50 ohm\AtRefHalfThru_HF.post&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">post</span><span class="o">.</span><span class="n">myOpenMenu</span><span class="p">(</span><span class="s2">r&quot;C:\Share\MUF_FILES\Step 9 - Correct DUTs to 50 ohm\AtRefHalfThru_HF.post&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12040,7 +12040,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">post</span><span class="o">.</span><span class="n">RunCalculation</span><span class="p">()</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">post</span><span class="o">.</span><span class="n">RunCalculation</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -12053,7 +12053,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">post</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">post</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -12066,7 +12066,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pna</span><span class="o">=</span><span class="n">PNAGr</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">pna</span><span class="o">=</span><span class="n">PNAGr</span>
 </pre></div>
 
 </div>
@@ -12098,10 +12098,10 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># to load the pyMez API as configured</span>
-<span class="kn">from</span> <span class="nn">pyMez</span> <span class="k">import</span> <span class="o">*</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># to load the pyMez API as configured</span>
+<span class="kn">from</span> <span class="nn">pyMez</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="c1"># this module is still experimental so it is not in the main import</span>
-<span class="kn">from</span> <span class="nn">pyMez.Code.DataHandlers.MUFModels</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pyMez.Code.DataHandlers.MUFModels</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 
 </div>
@@ -12137,7 +12137,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  now we can load the xml based vnauncert menu and manipulate it</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#  now we can load the xml based vnauncert menu and manipulate it</span>
 <span class="n">vna_menu</span><span class="o">=</span><span class="n">MUFVNAUncert</span><span class="p">(</span><span class="s2">r&quot;C:\Share\MUF_FILES\SOL_new.vnauncert_archive&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -12151,7 +12151,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># there are several helper functions for doing the most common things</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># there are several helper functions for doing the most common things</span>
 <span class="n">vna_menu</span><span class="o">.</span><span class="n">get_results_directory</span><span class="p">()</span>
 </pre></div>
 
@@ -12181,9 +12181,9 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># to check the action of a set/get </span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># to check the action of a set/get </span>
 <span class="n">vna_menu</span><span class="o">.</span><span class="n">set_results_directory</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Data&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">vna_menu</span><span class="o">.</span><span class="n">get_results_directory</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">vna_menu</span><span class="o">.</span><span class="n">get_results_directory</span><span class="p">())</span>
 </pre></div>
 
 </div>
@@ -12210,7 +12210,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># we can save the new menu in a different location using .save(new_path)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># we can save the new menu in a different location using .save(new_path)</span>
 <span class="n">vna_menu</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;new_menu.vnauncert_archive&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -12233,7 +12233,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># if we wanted to run it we can use a script version of the above automation </span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># if we wanted to run it we can use a script version of the above automation </span>
 <span class="n">run_muf_script</span><span class="p">(</span><span class="s2">&quot;new_menu.vnauncert_archive&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -12271,7 +12271,7 @@ The script took 1 seconds to run
 <div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># we can change the number of montecarlos, the results directory and run again</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># we can change the number of montecarlos, the results directory and run again</span>
 <span class="n">vna_menu</span><span class="o">.</span><span class="n">set_number_montecarlo</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">vna_menu</span><span class="o">.</span><span class="n">set_results_directory</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Data</span><span class="se">\\</span><span class="s2">UncertDemo&quot;</span><span class="p">)</span>
 <span class="n">vna_menu</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;new_menu.vnauncert_archive&quot;</span><span class="p">)</span>
@@ -12312,14 +12312,14 @@ The script took 35 seconds to run
 <div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># If we wanted to automate a series to investigate the effect of different number of trials, </span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># If we wanted to automate a series to investigate the effect of different number of trials, </span>
 <span class="c1"># we can write a script that sets the number of trails, runs then repeats</span>
 <span class="c1"># by putting this into a function it allows others to call it later</span>
 <span class="k">def</span> <span class="nf">monte_carlo_trials_test_script</span><span class="p">(</span><span class="n">menu_or_archive</span><span class="p">,</span><span class="n">top_level_results_folder</span><span class="p">,</span><span class="n">number_trials_list</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">]):</span>
     <span class="sd">&quot;&quot;&quot;Takes a vnauncert menu and steps through different numbers of montecarlo trials saving the result&quot;&quot;&quot;</span>
     <span class="n">vna_menu</span><span class="o">=</span><span class="n">MUFVNAUncert</span><span class="p">(</span><span class="n">menu_or_archive</span><span class="p">)</span>
     <span class="c1"># create and initialize a VNAUncert instance</span>
-    <span class="kn">from</span> <span class="nn">System</span> <span class="k">import</span> <span class="n">EventArgs</span>
+    <span class="kn">from</span> <span class="nn">System</span> <span class="kn">import</span> <span class="n">EventArgs</span>
     <span class="n">event</span><span class="o">=</span><span class="n">EventArgs</span><span class="p">()</span>
     <span class="n">vna</span><span class="o">=</span><span class="n">VNAUncertainty</span><span class="o">.</span><span class="n">VNAUncertainty</span><span class="p">()</span>
     <span class="n">vna</span><span class="o">.</span><span class="n">OnLoad</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
@@ -12331,28 +12331,28 @@ The script took 35 seconds to run
     <span class="n">total_start</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">number_trials_list</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Begining N = </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Begining N = {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span><span class="p">))</span>
             <span class="n">start</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
-            <span class="n">folder_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">top_level_results_folder</span><span class="p">,</span><span class="s2">&quot;N_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span><span class="p">))</span>
+            <span class="n">folder_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">top_level_results_folder</span><span class="p">,</span><span class="s2">&quot;N_{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span><span class="p">))</span>
             <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">folder_name</span><span class="p">)</span>
             <span class="n">vna_menu</span><span class="o">.</span><span class="n">set_number_montecarlo</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
             <span class="n">vna_menu</span><span class="o">.</span><span class="n">set_results_directory</span><span class="p">(</span><span class="n">folder_name</span><span class="p">)</span>
             <span class="c1"># rename and save the new menu</span>
-            <span class="n">new_menu_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span><span class="n">prefix_name</span><span class="o">+</span><span class="s2">&quot;_N_</span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;.&quot;</span><span class="o">+</span><span class="n">extension</span><span class="p">)</span>
+            <span class="n">new_menu_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span><span class="n">prefix_name</span><span class="o">+</span><span class="s2">&quot;_N_{0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;.&quot;</span><span class="o">+</span><span class="n">extension</span><span class="p">)</span>
             <span class="n">vna_menu</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">new_menu_name</span><span class="p">)</span>
             <span class="n">vna</span><span class="o">.</span><span class="n">myOpenMenu</span><span class="p">(</span><span class="n">new_menu_name</span><span class="p">)</span>
             <span class="n">vna</span><span class="o">.</span><span class="n">RunCalibration</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
             <span class="n">stop</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
             <span class="n">runtime</span><span class="o">=</span><span class="n">stop</span><span class="o">-</span><span class="n">start</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finished running N = </span><span class="si">{0}</span><span class="s2"> it took </span><span class="si">{1}</span><span class="s2"> seconds&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span><span class="p">,</span><span class="n">runtime</span><span class="o">.</span><span class="n">seconds</span><span class="p">))</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; The new menu is </span><span class="si">{0}</span><span class="s2"> and results are in </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">new_menu_name</span><span class="p">,</span><span class="n">folder_name</span><span class="p">))</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Finished running N = {0} it took {1} seconds&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span><span class="p">,</span><span class="n">runtime</span><span class="o">.</span><span class="n">seconds</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot; The new menu is {0} and results are in {1}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">new_menu_name</span><span class="p">,</span><span class="n">folder_name</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trial N = </span><span class="si">{0}</span><span class="s2"> failed moving to next trial&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Trial N = {0} failed moving to next trial&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span><span class="p">))</span>
             <span class="k">pass</span>
     <span class="n">total_stop</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
     <span class="n">total_runtime</span><span class="o">=</span><span class="n">total_stop</span><span class="o">-</span><span class="n">total_start</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Montecarlo trial Script is finished, total runtime is </span><span class="si">{0}</span><span class="s2"> seconds&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">total_runtime</span><span class="o">.</span><span class="n">seconds</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Montecarlo trial Script is finished, total runtime is {0} seconds&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">total_runtime</span><span class="o">.</span><span class="n">seconds</span><span class="p">))</span>
         
     
     
@@ -12368,7 +12368,7 @@ The script took 35 seconds to run
 <div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">monte_carlo_trials_test_script</span><span class="p">(</span><span class="s2">r&quot;C:\Share\8510calfiles\35CalComp\35CalComp_setup.vnauncert_archive&quot;</span><span class="p">,</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">monte_carlo_trials_test_script</span><span class="p">(</span><span class="s2">r&quot;C:\Share\8510calfiles\35CalComp\35CalComp_setup.vnauncert_archive&quot;</span><span class="p">,</span>
                                <span class="s2">r&quot;C:\Share\Montecarlo_Trial_20171004_2&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -12430,19 +12430,19 @@ Montecarlo trial Script is finished, total runtime is 658 seconds
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plot_montecarlo_trial_S11</span><span class="p">(</span><span class="n">top_level_results_folder</span><span class="p">,</span><span class="n">dut_name</span><span class="p">,</span><span class="n">number_trials_list</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">]):</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">plot_montecarlo_trial_S11</span><span class="p">(</span><span class="n">top_level_results_folder</span><span class="p">,</span><span class="n">dut_name</span><span class="p">,</span><span class="n">number_trials_list</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">]):</span>
     <span class="s2">&quot;generates a comparison plot for the S11 magnitude  of a montecarlo trial&quot;</span>
-    <span class="n">folder_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">top_level_results_folder</span><span class="p">,</span><span class="s2">&quot;N_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number_trials_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-    <span class="n">nominal_file_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span><span class="s2">&quot;DUTs&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_Support&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">),</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_0.s2p&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">))</span>
-    <span class="n">covariance_directory</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span><span class="s2">&quot;DUTs&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_Support&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">),</span><span class="s2">&quot;Covariance&quot;</span><span class="p">)</span>
+    <span class="n">folder_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">top_level_results_folder</span><span class="p">,</span><span class="s2">&quot;N_{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number_trials_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">nominal_file_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span><span class="s2">&quot;DUTs&quot;</span><span class="p">,</span><span class="s2">&quot;{0}_Support&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">),</span><span class="s2">&quot;{0}_0.s2p&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">))</span>
+    <span class="n">covariance_directory</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span><span class="s2">&quot;DUTs&quot;</span><span class="p">,</span><span class="s2">&quot;{0}_Support&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">),</span><span class="s2">&quot;Covariance&quot;</span><span class="p">)</span>
     <span class="n">sensitvity_reference</span><span class="o">=</span><span class="n">create_sensitivity_reference_curve</span><span class="p">(</span><span class="n">nominal_file_path</span><span class="o">=</span><span class="n">nominal_file_path</span><span class="p">,</span>
                                                             <span class="n">sensitivity_directory</span><span class="o">=</span><span class="n">covariance_directory</span><span class="p">,</span>
-                                                           <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;MA&quot;</span><span class="p">)</span>
+                                                           <span class="n">format</span><span class="o">=</span><span class="s2">&quot;MA&quot;</span><span class="p">)</span>
     <span class="n">montecarlo_list</span><span class="o">=</span><span class="p">[]</span>
     <span class="k">for</span> <span class="n">index</span><span class="p">,</span><span class="n">number</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">number_trials_list</span><span class="p">):</span>
-        <span class="n">folder_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">top_level_results_folder</span><span class="p">,</span><span class="s2">&quot;N_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span><span class="p">))</span>
-        <span class="n">montecarlo_folder_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span><span class="s2">&quot;DUTs&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_Support&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">),</span><span class="s2">&quot;MonteCarlo&quot;</span><span class="p">)</span>
-        <span class="n">montecarlo_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">create_monte_carlo_reference_curve</span><span class="p">(</span><span class="n">montecarlo_folder_name</span><span class="p">,</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;MA&quot;</span><span class="p">))</span>
+        <span class="n">folder_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">top_level_results_folder</span><span class="p">,</span><span class="s2">&quot;N_{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span><span class="p">))</span>
+        <span class="n">montecarlo_folder_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span><span class="s2">&quot;DUTs&quot;</span><span class="p">,</span><span class="s2">&quot;{0}_Support&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">),</span><span class="s2">&quot;MonteCarlo&quot;</span><span class="p">)</span>
+        <span class="n">montecarlo_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">create_monte_carlo_reference_curve</span><span class="p">(</span><span class="n">montecarlo_folder_name</span><span class="p">,</span><span class="n">format</span><span class="o">=</span><span class="s2">&quot;MA&quot;</span><span class="p">))</span>
         
     <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">)})</span>
@@ -12452,7 +12452,7 @@ Montecarlo trial Script is finished, total runtime is 658 seconds
         <span class="n">uncert_sensitvity</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sensitvity_reference</span><span class="p">[</span><span class="s2">&quot;umagS11&quot;</span><span class="p">])</span>
         <span class="n">uncert_montecarlo</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">montecarlo</span><span class="p">[</span><span class="s2">&quot;umagS11&quot;</span><span class="p">])</span>
         <span class="n">f</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sensitvity_reference</span><span class="p">[</span><span class="s2">&quot;Frequency&quot;</span><span class="p">])</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">sensitivity_magS11</span><span class="o">-</span><span class="n">montecarlo_magS11</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;N = </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number_trials_list</span><span class="p">[</span><span class="n">index</span><span class="p">]),</span><span class="n">alpha</span><span class="o">=.</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">sensitivity_magS11</span><span class="o">-</span><span class="n">montecarlo_magS11</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;N = {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number_trials_list</span><span class="p">[</span><span class="n">index</span><span class="p">]),</span><span class="n">alpha</span><span class="o">=.</span><span class="mi">3</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">uncert_sensitvity</span><span class="p">,</span><span class="n">uncert_sensitvity</span><span class="p">,</span>
                         <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
                         <span class="n">alpha</span><span class="o">=.</span><span class="mi">25</span><span class="p">,</span>
@@ -12461,7 +12461,7 @@ Montecarlo trial Script is finished, total runtime is 658 seconds
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
     <span class="c1">#plt.ylim([-.004,.004])</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency(GHz)&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> Nominal-Montecarlo |S11| &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;{0} Nominal-Montecarlo |S11| &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">top_level_results_folder</span><span class="p">,</span>
                              <span class="s2">&quot;MonteCarlo_Trial_Size_Test.png&quot;</span><span class="p">),</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -12478,7 +12478,7 @@ Montecarlo trial Script is finished, total runtime is 658 seconds
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_montecarlo_trial_S11</span><span class="p">(</span> <span class="s2">r&quot;C:\Share\Montecarlo_Trial_20171004&quot;</span><span class="p">,</span><span class="s2">&quot;M105P1&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">plot_montecarlo_trial_S11</span><span class="p">(</span> <span class="s2">r&quot;C:\Share\Montecarlo_Trial_20171004&quot;</span><span class="p">,</span><span class="s2">&quot;M105P1&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -13184,21 +13184,21 @@ MDMzMzMzM7OO5cSGmZmZmZmZmXWs/wM5XGlTXxiatQAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">top_level_results_folder</span><span class="o">=</span><span class="s2">r&quot;C:\Share\Montecarlo_Trial_20171004_2&quot;</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">top_level_results_folder</span><span class="o">=</span><span class="s2">r&quot;C:\Share\Montecarlo_Trial_20171004_2&quot;</span>
 <span class="n">dut_name</span><span class="o">=</span><span class="s2">&quot;M105P1&quot;</span>
 <span class="n">number_trials_list</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">]</span>
 
-<span class="n">folder_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">top_level_results_folder</span><span class="p">,</span><span class="s2">&quot;N_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number_trials_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-<span class="n">nominal_file_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span><span class="s2">&quot;DUTs&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_Support&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">),</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_0.s2p&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">))</span>
-<span class="n">covariance_directory</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span><span class="s2">&quot;DUTs&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_Support&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">),</span><span class="s2">&quot;Covariance&quot;</span><span class="p">)</span>
+<span class="n">folder_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">top_level_results_folder</span><span class="p">,</span><span class="s2">&quot;N_{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number_trials_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">nominal_file_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span><span class="s2">&quot;DUTs&quot;</span><span class="p">,</span><span class="s2">&quot;{0}_Support&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">),</span><span class="s2">&quot;{0}_0.s2p&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">))</span>
+<span class="n">covariance_directory</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span><span class="s2">&quot;DUTs&quot;</span><span class="p">,</span><span class="s2">&quot;{0}_Support&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">),</span><span class="s2">&quot;Covariance&quot;</span><span class="p">)</span>
 <span class="n">sensitvity_reference</span><span class="o">=</span><span class="n">create_sensitivity_reference_curve</span><span class="p">(</span><span class="n">nominal_file_path</span><span class="o">=</span><span class="n">nominal_file_path</span><span class="p">,</span>
                                                         <span class="n">sensitivity_directory</span><span class="o">=</span><span class="n">covariance_directory</span><span class="p">,</span>
-                                                       <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;MA&quot;</span><span class="p">)</span>
+                                                       <span class="n">format</span><span class="o">=</span><span class="s2">&quot;MA&quot;</span><span class="p">)</span>
 <span class="n">montecarlo_list</span><span class="o">=</span><span class="p">[]</span>
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span><span class="n">number</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">number_trials_list</span><span class="p">):</span>
-    <span class="n">folder_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">top_level_results_folder</span><span class="p">,</span><span class="s2">&quot;N_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span><span class="p">))</span>
-    <span class="n">montecarlo_folder_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span><span class="s2">&quot;DUTs&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_Support&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">),</span><span class="s2">&quot;MonteCarlo&quot;</span><span class="p">)</span>
-    <span class="n">montecarlo_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">create_monte_carlo_reference_curve</span><span class="p">(</span><span class="n">montecarlo_folder_name</span><span class="p">,</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;MA&quot;</span><span class="p">))</span>
+    <span class="n">folder_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">top_level_results_folder</span><span class="p">,</span><span class="s2">&quot;N_{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span><span class="p">))</span>
+    <span class="n">montecarlo_folder_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span><span class="s2">&quot;DUTs&quot;</span><span class="p">,</span><span class="s2">&quot;{0}_Support&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">),</span><span class="s2">&quot;MonteCarlo&quot;</span><span class="p">)</span>
+    <span class="n">montecarlo_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">create_monte_carlo_reference_curve</span><span class="p">(</span><span class="n">montecarlo_folder_name</span><span class="p">,</span><span class="n">format</span><span class="o">=</span><span class="s2">&quot;MA&quot;</span><span class="p">))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">)})</span>
@@ -13208,16 +13208,16 @@ MDMzMzMzM7OO5cSGmZmZmZmZmXWs/wM5XGlTXxiatQAAAABJRU5ErkJggg==
     <span class="n">uncert_sensitvity</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sensitvity_reference</span><span class="p">[</span><span class="s2">&quot;umagS11&quot;</span><span class="p">])</span>
     <span class="n">uncert_montecarlo</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">montecarlo</span><span class="p">[</span><span class="s2">&quot;umagS11&quot;</span><span class="p">])</span>
     <span class="n">f</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sensitvity_reference</span><span class="p">[</span><span class="s2">&quot;Frequency&quot;</span><span class="p">])</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">sensitivity_magS11</span><span class="o">-</span><span class="n">montecarlo_magS11</span><span class="p">,</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;N = </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number_trials_list</span><span class="p">[</span><span class="n">index</span><span class="p">]),</span><span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">sensitivity_magS11</span><span class="o">-</span><span class="n">montecarlo_magS11</span><span class="p">,</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;N = {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number_trials_list</span><span class="p">[</span><span class="n">index</span><span class="p">]),</span><span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">uncert_sensitvity</span><span class="p">,</span><span class="n">uncert_sensitvity</span><span class="p">,</span>
                     <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
                     <span class="n">alpha</span><span class="o">=.</span><span class="mi">25</span><span class="p">,</span>
                     <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Sensitivity Uncertainty&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-.</span><span class="mi">004</span><span class="p">,</span><span class="o">.</span><span class="mi">004</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-.</span><span class="mo">004</span><span class="p">,</span><span class="o">.</span><span class="mo">004</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency(GHz)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> Nominal-Montecarlo |S11| &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;{0} Nominal-Montecarlo |S11| &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">top_level_results_folder</span><span class="p">,</span>
                          <span class="s2">&quot;MonteCarlo_Trial_Size_Test2.png&quot;</span><span class="p">),</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -15487,23 +15487,23 @@ JGkKTLJIkiRJkiRNgUkWSZIkSZKkKTDJIkmSJEmSNAV/AgQHI6+Mgs3hAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span><span class="n">montecarlo</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">montecarlo_list</span><span class="p">):</span>
     <span class="n">montecarlo_magS11</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">montecarlo</span><span class="p">[</span><span class="s2">&quot;magS11&quot;</span><span class="p">])</span>
     <span class="n">sensitivity_magS11</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sensitvity_reference</span><span class="p">[</span><span class="s2">&quot;magS11&quot;</span><span class="p">])</span>
     <span class="n">uncert_sensitvity</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sensitvity_reference</span><span class="p">[</span><span class="s2">&quot;umagS11&quot;</span><span class="p">])</span>
     <span class="n">uncert_montecarlo</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">montecarlo</span><span class="p">[</span><span class="s2">&quot;umagS11&quot;</span><span class="p">])</span>
     <span class="n">f</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sensitvity_reference</span><span class="p">[</span><span class="s2">&quot;Frequency&quot;</span><span class="p">])</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">uncert_montecarlo</span><span class="p">,</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;N = </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number_trials_list</span><span class="p">[</span><span class="n">index</span><span class="p">]),</span><span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">uncert_montecarlo</span><span class="p">,</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;N = {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number_trials_list</span><span class="p">[</span><span class="n">index</span><span class="p">]),</span><span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">uncert_sensitvity</span><span class="p">,</span><span class="n">uncert_sensitvity</span><span class="p">,</span>
                     <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
                     <span class="n">alpha</span><span class="o">=.</span><span class="mi">25</span><span class="p">,</span>
                     <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Sensitivity Uncertainty&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-.</span><span class="mi">004</span><span class="p">,</span><span class="o">.</span><span class="mi">004</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-.</span><span class="mo">004</span><span class="p">,</span><span class="o">.</span><span class="mo">004</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency(GHz)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> Uncertainty Montecarlo |S11| &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;{0} Uncertainty Montecarlo |S11| &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dut_name</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">top_level_results_folder</span><span class="p">,</span>
                          <span class="s2">&quot;MonteCarlo_Trial_Size_Test2.png&quot;</span><span class="p">),</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -17570,7 +17570,7 @@ YII=
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython2"><pre><span></span> 
 </pre></div>
 
 </div>
